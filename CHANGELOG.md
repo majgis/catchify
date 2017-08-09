@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+- Add index.test.js to .npmignore
 
 ## [v1.1.2] - 2017-08-09
 
