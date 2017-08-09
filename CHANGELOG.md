@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+- Commit missing .npmignore
 - Eliminate use of catch method internally, where possible
 
 ## [v1.1.3] - 2017-08-09
