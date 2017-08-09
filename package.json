@@ -1,12 +1,12 @@
 {
   "name": "catchify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An async/await utility to eliminate try/catch in favor of error values.",
   "main": "index.js",
   "author": "Michael Jackson <majgis@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test":"node index.test.js"
+    "test": "node index.test.js"
   },
   "engines": {
     "node": ">=8"
