@@ -5,7 +5,6 @@ Inspired by this [article][0].
 
 ## Usage
 
-Simples
 ```
 const catchify = require('catchify');
 
