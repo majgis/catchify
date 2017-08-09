@@ -1,15 +1,28 @@
 const catchify = require('./index');
 
-async function log(p) {
+async function testCatchify(p) {
   const [err, value] = await catchify(p);
-  console.log('err:', err);
-  console.log('value:', value);
+  console.log(`err: ${err}, value: ${value}\n`);
 }
 
-log(new Promise((resolve, reject) => {
+testCatchify(new Promise((resolve) => {
   resolve(1);
 }));
 
-log(new Promise((resolve, reject) => {
+testCatchify(new Promise((resolve, reject) => {
+  reject('no bueno');
+}));
+
+
+async function testResolve(p) {
+  const [err, value] = await catchify.resolve(p);
+  console.log(`err: ${err}, value: ${value}\n`);
+}
+
+testResolve(new Promise((resolve) => {
+  resolve(1);
+}));
+
+testResolve(new Promise((resolve, reject) => {
   reject('no bueno');
 }));

@@ -3,7 +3,7 @@ An async/await utility to eliminate try/catch in favor of error values.
 
 Inspired by this [article][0].
 
-## Usage
+## Quick Usage Example
 
 ```
 const catchify = require('catchify');
@@ -20,4 +20,16 @@ async function example(promise){
 
 ```
 
+## API
+
+- catchify(value)
+  - Equivalent to [Promise.resolve(value)][1]
+  - \[err, resolvedValue]
+  
+- catchify.resolve(value)
+  - Equivalent to [Promise.resolve(value)][1]
+  - \[err, resolvedValue]
+
+
 [0]: http://blog.grossman.io/how-to-write-async-await-without-try-catch-blocks-in-javascript/
+[1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
