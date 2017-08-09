@@ -11,6 +11,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+
+## [v1.1.4] - 2017-08-09
+
+### Patch
 - Commit missing .npmignore
 - Eliminate use of catch method internally, where possible
 
@@ -56,7 +60,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 - Initial release
 
-[Unreleased]: https://github.com/majgis/catchify/compare/v1.1.3...master
+[Unreleased]: https://github.com/majgis/catchify/compare/v1.1.4...master
+[v1.1.4]: https://github.com/majgis/catchify/compare/v1.1.3...v1.1.4
 [v1.1.3]: https://github.com/majgis/catchify/compare/v1.1.2...v1.1.3
 [v1.1.2]: https://github.com/majgis/catchify/compare/v1.1.1...v1.1.2
 [v1.1.1]: https://github.com/majgis/catchify/compare/v1.1.0...v1.1.1
