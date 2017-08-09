@@ -5,21 +5,19 @@ Inspired by this [article][0].
 
 ## Usage
 
+Simples
 ```
 const catchify = require('catchify');
 
-async function log(p){
-  const [err, value] = await catchify(p);
-  console.log(`err: ${err}, value: ${value}`);
+async function example(promise){
+
+  const [err, value] = await catchify(promise);
+  
+  if (err){
+    // Respond to error here
+  }
+  // Process value here
 }
-
-log(new Promise((resolve, reject) =>{
-  resolve(1);
-}));
-
-log(new Promise((resolve, reject) =>{
-  reject('no bueno');
-}));
 
 ```
 
