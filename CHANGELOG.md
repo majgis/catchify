@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 
 ### Minor
+- Add catchify.race() which is equivalent to Promise.race()
 - Add catchify.resolve() which is equivalent to catchify()
 
 ### Patch

@@ -5,7 +5,7 @@ function onThen(v) {
 }
 
 function onCatch(err) {
-  return [err]
+  return [err];
 }
 
 function catchify(p) {
@@ -16,5 +16,12 @@ function catchify(p) {
 }
 
 catchify.resolve = catchify;
+
+catchify.race = function catchifyRace(iterable){
+  return Promise
+    .race(iterable)
+    .then(onThen)
+    .catch(onCatch);
+};
 
 module.exports = catchify;

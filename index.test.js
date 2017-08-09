@@ -26,3 +26,20 @@ testResolve(new Promise((resolve) => {
 testResolve(new Promise((resolve, reject) => {
   reject('no bueno');
 }));
+
+
+async function testRace(p) {
+  const [err, value] = await catchify.race(p);
+  console.log(`err: ${err}, value: ${value}\n`);
+}
+
+testRace([new Promise((resolve) => {
+  resolve(1);
+})]);
+
+testRace([new Promise((resolve, reject) => {
+  reject('no bueno');
+})]);
+
+setTimeout(()=>{}, 500);
+
