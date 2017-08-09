@@ -10,5 +10,18 @@
   },
   "engines": {
     "node": ">=8"
-  }
+  },
+  "dependencies": {
+    "change-log": "^1.6.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/majgis/catchify.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/majgis/catchify/issues"
+  },
+  "homepage": "https://github.com/majgis/catchify#readme"
 }
