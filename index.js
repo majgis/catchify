@@ -15,8 +15,7 @@ function onCatch(err) {
 function catchify(p) {
   return Promise
     .resolve(p)
-    .then(onThen)
-    .catch(onCatch);
+    .then(onThen, onCatch);
 }
 
 catchify.resolve = catchify;
@@ -24,15 +23,13 @@ catchify.resolve = catchify;
 catchify.race = function catchifyRace(iterable) {
   return Promise
     .race(iterable)
-    .then(onThen)
-    .catch(onCatch);
+    .then(onThen, onCatch);
 };
 
 catchify.all = function catchifyAll(iterable) {
   return Promise
     .all(iterable)
-    .then(onThenSpread)
-    .catch(onCatch)
+    .then(onThenSpread, onCatch);
 };
 
 catchify.reject = function catchifyReject(reason){
