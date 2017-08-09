@@ -42,7 +42,6 @@ testRace([new Promise((resolve, reject) => {
 })]);
 
 
-
 async function testAll(iterable) {
   const [err, value1, value2] = await catchify.all(iterable);
   console.log(`err: ${err}, value1: ${value1}, value2: ${value2}`);
@@ -50,12 +49,19 @@ async function testAll(iterable) {
 
 testAll([new Promise((resolve) => {
   resolve(1);
-}),2]);
+}), 2]);
 
 testAll([new Promise((resolve, reject) => {
   reject(true);
-}),2]);
+}), 2]);
 
 
-setTimeout(()=>{}, 500);
+async function testReject(reason) {
+  const [err] = await catchify.reject(reason);
+  console.log(`err: ${err}`);
+}
 
+testReject('test');
+
+setTimeout(() => {
+}, 500);

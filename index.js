@@ -35,4 +35,10 @@ catchify.all = function catchifyAll(iterable) {
     .catch(onCatch)
 };
 
+catchify.reject = function catchifyReject(reason){
+  return Promise
+    .reject(reason)
+    .catch(onCatch)
+};
+
 module.exports = catchify;
