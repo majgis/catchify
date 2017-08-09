@@ -26,23 +26,27 @@ async function example(promise){
 
     - Equivalent to [Promise.resolve(value)][1]
     - \[err, resolvedValue]
-  
+
+
 - **catchify.resolve(value)**
 
     - Equivalent to [Promise.resolve(value)][1]
     - \[err, resolvedValue]
+
 
 - **catchify.race(iterable)**
 
     - Equivalent to [Promise.race(iterable)][2]
     - \[err, resolvedValue]
 
+
 - **catchify.all(iterable)**
 
     - Equivalent to [Promise.all(iterable)][3]
     - The resolved values are spread after error value
     - \[err, ...resolvedValues]
-  
+
+
 - **catchify.reject(reason)**
 
     - Equivalent to [Promise.reject(reason)][4]
