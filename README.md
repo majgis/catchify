@@ -62,7 +62,6 @@ async function example(promise){
 
     - Like `catchify.some(iterable)` but allows limiting concurrent asynchronous tasks
     - Promises have no way to delay start, so any function in iterable will be called on its turn
-    - Other than functions, which are called, all other values behave like you'd expect with 
     - Values returned from called functions can be a Promise, which would provide actually limiting 
     functionality, or any other value for convenience, as it will be passed to `Promse.resolve()`
     before proceeding
