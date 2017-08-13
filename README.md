@@ -21,7 +21,8 @@ async function example(promise){
 ## API
 
 * **catchify(value)**
-  * Equivalent to [Promise.resolve(value)][1] and `catchify.resolve(value)`
+  * Equivalent to [Promise.resolve(value)][1]
+  * `catchify(value)` is an alias for `catchify.resolve(value)`
   * Returns: \[error, value]
   
   ```
@@ -30,7 +31,8 @@ async function example(promise){
   ```
   
 * **catchify.resolve(value)**
-  * Equivalent to [Promise.resolve(value)][1] and `catchify(value)`
+  * Equivalent to [Promise.resolve(value)][1]
+  * `catchify.resolve(value)` is an alias for `catchify(value)`
   * Returns: \[error, value]
   
   ```
