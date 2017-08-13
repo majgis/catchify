@@ -21,7 +21,7 @@ async function example(promise){
 ## API
 
 * **catchify(value)**
-  * Equivalent to [Promise.resolve(value)][1]
+  * Equivalent to [Promise.resolve(value)][1] and `catchify.resolve(value)`
   * Returns: \[error, value]
   
   ```
@@ -30,12 +30,12 @@ async function example(promise){
   ```
   
 * **catchify.resolve(value)**
-  * Equivalent to [Promise.resolve(value)][1]
+  * Equivalent to [Promise.resolve(value)][1] and `catchify(value)`
   * Returns: \[error, value]
   
   ```
   const [error, value] 
-    = await catchify.resolve(promise)
+    = await catchify.resolve('Quickly test the success path')
   ```
   
 * **catchify.race(iterable)**
@@ -62,7 +62,7 @@ async function example(promise){
   
   ```
   const [error, value] 
-    = await catchify.reject('Let's quickly test the error path')
+    = await catchify.reject('Quickly test the error path')
   ```
   
 * **catchify.some(iterable)**
