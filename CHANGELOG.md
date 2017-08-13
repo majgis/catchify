@@ -12,6 +12,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Patch
 
+## [v2.0.0] - 2017-08-13
+
+### Major
+- Do not spread values returned by catchify.all(iterable)
+
+### Patch
+- Move change-log from dependency to devDependency
+
 ## [v1.1.4] - 2017-08-09
 
 ### Patch
@@ -60,7 +68,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 - Initial release
 
-[Unreleased]: https://github.com/majgis/catchify/compare/v1.1.4...master
+[Unreleased]: https://github.com/majgis/catchify/compare/v2.0.0...master
+[v2.0.0]: https://github.com/majgis/catchify/compare/v1.1.4...v2.0.0
 [v1.1.4]: https://github.com/majgis/catchify/compare/v1.1.3...v1.1.4
 [v1.1.3]: https://github.com/majgis/catchify/compare/v1.1.2...v1.1.3
 [v1.1.2]: https://github.com/majgis/catchify/compare/v1.1.1...v1.1.2

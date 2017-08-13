@@ -1,15 +1,11 @@
 'use strict';
 
-function onThenSpread(iterable) {
-  return [null, ...iterable];
+function onThen(value) {
+  return [null, value];
 }
 
-function onThen(v) {
-  return [null, v];
-}
-
-function onCatch(err) {
-  return [err];
+function onCatch(error) {
+  return [error, null];
 }
 
 function catchify(p) {
@@ -29,7 +25,7 @@ catchify.race = function catchifyRace(iterable) {
 catchify.all = function catchifyAll(iterable) {
   return Promise
     .all(iterable)
-    .then(onThenSpread, onCatch);
+    .then(onThen, onCatch);
 };
 
 catchify.reject = function catchifyReject(reason){
