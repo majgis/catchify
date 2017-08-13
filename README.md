@@ -9,11 +9,9 @@ Inspired by this [article][0].
 const catchify = require('catchify');
 
 async function example(promise){
-  const [error, value] = await catchify(promise);
-  if (error) {
-    // Handle error here
-  }
-  // Process value here
+  const [error, value={message:'Hello'}] = await catchify(promise);
+  if (error) console.log(error);
+  return value;
 }
 
 ```
