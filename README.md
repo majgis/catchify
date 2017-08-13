@@ -42,12 +42,14 @@ async function example(promise){
   * Within the errors array, an error will be null if there was no error
   * Within the values array, the value will be null if there was an error
   * Returns: \[errors, values]
-* **catchify.limit(iterable, limit=2)**
+* **catchify.limit(iterable, limit=2, exitOnError=false)**
   * Like `catchify.some(iterable)` but it allows limiting concurrent asynchronous tasks
   * Promises have no way to delay start, so any function in iterable will be called on its turn
   * Values returned from called functions can be a Promise, which would provide the actual limiting 
     functionality, or any other value for convenience, as it will be passed to `Promise.resolve()`
     before proceeding
+  * If exitOnError=true, each subset is still executed like `catchify.some(iterable)` but execution
+    will halt if there is an error
   * Returns: \[errors, values]
 
 [0]: http://blog.grossman.io/how-to-write-async-await-without-try-catch-blocks-in-javascript/

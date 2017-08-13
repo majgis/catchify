@@ -77,7 +77,7 @@ catchify.some = function catchifySome(iterable) {
     .then(onThenWithErrors);
 };
 
-catchify.limit = async function catchifyLimit(iterable, limit = 2) {
+catchify.limit = async function catchifyLimit(iterable, limit = 2, exitOnError = false) {
   const allErrors = [];
   const allValues = [];
   const queue = [];
@@ -88,6 +88,9 @@ catchify.limit = async function catchifyLimit(iterable, limit = 2) {
       allErrors.push(...errors);
       allValues.push(...values);
       queue.length = 0;
+      if (exitOnError && errors.filter((err) => err).length > 0) {
+        break;
+      }
     }
   }
   if (queue.length > 0) {

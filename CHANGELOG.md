@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 
 ### Minor
+- Add an optional exitOnError parameter to `catchify.limit(iterable, limit, exitOnError)`
 
 ### Patch
 

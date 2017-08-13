@@ -54,8 +54,8 @@ testSome([
   Promise.reject(true)
 ]);
 
-async function testLimit(iterable) {
-  const [errors, values] = await catchify.limit(iterable, 2);
+async function testLimit(iterable, exitOnError=false) {
+  const [errors, values] = await catchify.limit(iterable, 2, exitOnError);
   console.log(`limit - err: ${JSON.stringify(errors)}, values: ${JSON.stringify(values)}`)
 }
 
@@ -73,7 +73,7 @@ testLimit([
   }
 ]);
 
-testLimit([
+const limitPromises = [
   ()=>{
     return new Promise((resolve) => {
       setTimeout(()=>{
@@ -84,11 +84,11 @@ testLimit([
     });
   },
   ()=>{
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       setTimeout(()=>{
         const result = 2;
         console.log(result);
-        resolve(result);
+        reject(result);
       }, 2000);
     });
   },
@@ -119,7 +119,11 @@ testLimit([
       }, 2000);
     });
   }
-]);
+];
+
+testLimit(limitPromises);
+
+testLimit(limitPromises, true);
 
 setTimeout(() => {
 }, 1000);
