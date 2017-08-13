@@ -22,50 +22,33 @@ async function example(promise){
 
 ## API
 
-- **catchify(value)**
-
-    - Equivalent to [Promise.resolve(value)][1]
-    - \[error, value]
-
-
-- **catchify.resolve(value)**
-
-    - Equivalent to [Promise.resolve(value)][1]
-    - \[error, value]
-
-
-- **catchify.race(iterable)**
-
-    - Equivalent to [Promise.race(iterable)][2]
-    - \[error, value]
-
-
-- **catchify.all(iterable)**
-
-    - Equivalent to [Promise.all(iterable)][3]
-    - \[error, values]
-
-
-- **catchify.reject(reason)**
-
-    - Equivalent to [Promise.reject(reason)][4]
-    - \[error]
-
-- **catchify.some(iterable)**
-
-    - Like `catchify.all(iterable)` but an error does not prevent resolution of the rest
-    - Within the errors array, an error will be null if there was no error
-    - Within the values array, the value will be null if there was an error
-    - \[errors, values]
-
-- **catchify.limit(iterable, limit=2)**
-
-    - Like `catchify.some(iterable)` but allows limiting concurrent asynchronous tasks
-    - Promises have no way to delay start, so any function in iterable will be called on its turn
-    - Values returned from called functions can be a Promise, which would provide actually limiting 
-    functionality, or any other value for convenience, as it will be passed to `Promse.resolve()`
+* **catchify(value)**
+  * Equivalent to [Promise.resolve(value)][1]
+  * Returns: \[error, value]
+* **catchify.resolve(value)**
+  * Equivalent to [Promise.resolve(value)][1]
+  * Returns: \[error, value]
+* **catchify.race(iterable)**
+  * Equivalent to [Promise.race(iterable)][2]
+  * Returns: \[error, value]
+* **catchify.all(iterable)**
+  * Equivalent to [Promise.all(iterable)][3]
+  * Returns: \[error, values]
+* **catchify.reject(reason)**
+  * Equivalent to [Promise.reject(reason)][4]
+  * Returns: \[error]
+* **catchify.some(iterable)**
+  * Like `catchify.all(iterable)` but an error does not prevent resolution of the rest
+  * Within the errors array, an error will be null if there was no error
+  * Within the values array, the value will be null if there was an error
+  * Returns: \[errors, values]
+* **catchify.limit(iterable, limit=2)**
+  * Like `catchify.some(iterable)` but it allows limiting concurrent asynchronous tasks
+  * Promises have no way to delay start, so any function in iterable will be called on its turn
+  * Values returned from called functions can be a Promise, which would provide the actual limiting 
+    functionality, or any other value for convenience, as it will be passed to `Promise.resolve()`
     before proceeding
-    - \[errors, values]
+  * Returns: \[errors, values]
 
 [0]: http://blog.grossman.io/how-to-write-async-await-without-try-catch-blocks-in-javascript/
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
