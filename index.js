@@ -1,11 +1,11 @@
 'use strict';
 
-function onThen(v) {
-  return [null, v];
+function onThen(value) {
+  return [null, value];
 }
 
-function onCatch(err) {
-  return [err];
+function onCatch(error) {
+  return [error, null];
 }
 
 function catchify(p) {
