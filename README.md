@@ -3,6 +3,8 @@ An async/await utility to eliminate try/catch in favor of error values.
 
 Inspired by this [article][0].
 
+Also see [default values for array destructuring][5].
+
 ## Example
 
 ```
@@ -22,31 +24,46 @@ async function example(promise){
   * Equivalent to [Promise.resolve(value)][1]
   * Returns: \[error, value]
   
-  ```const [error, value] = await catchify(promise)```
+  ```
+  const [error, value] 
+    = await catchify(promise)
+  ```
   
 * **catchify.resolve(value)**
   * Equivalent to [Promise.resolve(value)][1]
   * Returns: \[error, value]
   
-  ```const [error, value] = await catchify.resolve(promise)```
+  ```
+  const [error, value] 
+    = await catchify.resolve(promise)
+  ```
   
 * **catchify.race(iterable)**
   * Equivalent to [Promise.race(iterable)][2]
   * Returns: \[error, value]
   
-  ```const [error, value] = await catchify.race([promise1, promise2])```
+  ```
+  const [error, value] 
+    = await catchify.race([promise1, promise2])
+  ```
   
 * **catchify.all(iterable)**
   * Equivalent to [Promise.all(iterable)][3]
   * Returns: \[error, values]
   
-  ```const [error, [value1, value2]] = await catchify.all([promise1, promise2])```
+  ```
+  const [error, [value1, value2]] 
+    = await catchify.all([promise1, promise2])
+  ```
   
 * **catchify.reject(reason)**
   * Equivalent to [Promise.reject(reason)][4]
   * Returns: \[error]
   
-  ```const [error, value] = await catchify.reject('Let's quickly test the error path')```
+  ```
+  const [error, value] 
+    = await catchify.reject('Let's quickly test the error path')
+  ```
   
 * **catchify.some(iterable)**
   * Like `catchify.all(iterable)` but an error does not prevent resolution of the rest
@@ -54,7 +71,10 @@ async function example(promise){
   * Within the values array, the value will be null if there was an error
   * Returns: \[errors, values]
   
-  ```const [[error1, error2], [value1, value2]] = catchify.some([promise1, promise2])```
+  ```
+  const [[error1, error2], [value1, value2]] 
+    = catchify.some([promise1, promise2])
+  ```
   
 * **catchify.limit(iterable, limit=2, exitOnError=false)**
   * Like `catchify.some(iterable)` but it allows limiting concurrent asynchronous tasks
@@ -67,9 +87,12 @@ async function example(promise){
   * Returns: \[errors, values]
   
   ```
-  // The promises returned by fn1 and fn2 will execute concurrently. 
-  // The promise from fn3 will start after the promises from fn1 and fn2 have resolved
-  const [[error1, error2, error3], [value1, value2, value3]] = catchify.limit([fn1, fn2, fn3])
+  // The promises from fn1 and fn2 execute concurrently
+  // fn3 is called after promises from fn1 and fn2 resolve
+  const [
+    [error1, error2, error3], 
+    [value1, value2, value3]
+  ] = catchify.limit([fn1, fn2, fn3])
   ```
 
 [0]: http://blog.grossman.io/how-to-write-async-await-without-try-catch-blocks-in-javascript/
@@ -77,3 +100,4 @@ async function example(promise){
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race
 [3]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
 [4]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject
+[5]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Default_values

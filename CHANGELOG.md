@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+- Update the readme
 
 ## [v2.3.3] - 2017-08-13
 
