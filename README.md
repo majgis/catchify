@@ -40,13 +40,13 @@ async function example(promise){
   * Equivalent to [Promise.all(iterable)][3]
   * Returns: \[error, values]
   
-  ```const [error, value] = await catchify.all([promise1, promise2])```
+  ```const [error, [value1, value2]] = await catchify.all([promise1, promise2])```
   
 * **catchify.reject(reason)**
   * Equivalent to [Promise.reject(reason)][4]
   * Returns: \[error]
   
-  ```const [error] = await catchify.reject('this is a test of error path')```
+  ```const [error, value] = await catchify.reject('Let's quickly test the error path')```
   
 * **catchify.some(iterable)**
   * Like `catchify.all(iterable)` but an error does not prevent resolution of the rest
