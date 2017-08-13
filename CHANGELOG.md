@@ -9,9 +9,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 
 ### Minor
-- Add an optional exitOnError parameter to `catchify.limit(iterable, limit, exitOnError)`
 
 ### Patch
+
+## [v2.3.0] - 2017-08-13
+
+### Minor
+- Add an optional exitOnError parameter to `catchify.limit(iterable, limit, exitOnError)`
 
 ## [v2.2.2] - 2017-08-13
 
@@ -96,7 +100,8 @@ an error does not prevent all errors and values from being returned
 ### Major
 - Initial release
 
-[Unreleased]: https://github.com/majgis/catchify/compare/v2.2.2...master
+[Unreleased]: https://github.com/majgis/catchify/compare/v2.3.0...master
+[v2.3.0]: https://github.com/majgis/catchify/compare/v2.2.2...v2.3.0
 [v2.2.2]: https://github.com/majgis/catchify/compare/v2.2.1...v2.2.2
 [v2.2.1]: https://github.com/majgis/catchify/compare/v2.2.0...v2.2.1
 [v2.2.0]: https://github.com/majgis/catchify/compare/v2.1.1...v2.2.0
