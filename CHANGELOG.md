@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+- Fix `catchify.some(iterable)` to work with any value type, not just promises.
 
 ## [v2.1.0] - 2017-08-13
 

@@ -49,7 +49,7 @@ async function testSome (iterable){
 }
 
 testSome([
-  Promise.resolve(1),
+  1,
   Promise.resolve(2),
   Promise.reject(true)
 ]);

@@ -49,8 +49,9 @@ function onError (error) {
   };
 }
 
-function onValueOrError(promise) {
-  return promise
+function onValueOrError(value) {
+  return Promise
+    .resolve(value)
     .then(onValue)
     .catch(onError);
 }
