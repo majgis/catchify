@@ -43,5 +43,16 @@ async function testReject(reason) {
 
 testReject('test');
 
+async function testSome (iterable){
+  const [errors, values] = await catchify.some(iterable);
+  console.log(`some - err: ${JSON.stringify(errors)}, values: ${JSON.stringify(values)}`)
+}
+
+testSome([
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.reject(true)
+]);
+
 setTimeout(() => {
 }, 500);

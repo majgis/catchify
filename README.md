@@ -50,7 +50,14 @@ async function example(promise){
 
     - Equivalent to [Promise.reject(reason)][4]
     - \[error]
-  
+
+- **catchify.some(iterable)**
+
+    - Like `catchify.all(iterable)` but an error does not prevent resolution of the rest
+    - Within the errors array, an error will be null if there was no error
+    - Within the values array, the value will be null if there was an error
+    - \[errors, values]
+    
 [0]: http://blog.grossman.io/how-to-write-async-await-without-try-catch-blocks-in-javascript/
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race
