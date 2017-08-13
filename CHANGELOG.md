@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased] - YYYY-MM-DD
 
 ### Major
+- Do not spread values returned by catchify.all(iterable)
 
 ### Minor
 

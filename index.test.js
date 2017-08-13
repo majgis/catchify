@@ -43,8 +43,8 @@ testRace([new Promise((resolve, reject) => {
 
 
 async function testAll(iterable) {
-  const [err, value1, value2] = await catchify.all(iterable);
-  console.log(`err: ${err}, value1: ${value1}, value2: ${value2}`);
+  const [error, values] = await catchify.all(iterable);
+  console.log(`err: ${error}, values: ${JSON.stringify(values)}`);
 }
 
 testAll([new Promise((resolve) => {

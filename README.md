@@ -25,32 +25,31 @@ async function example(promise){
 - **catchify(value)**
 
     - Equivalent to [Promise.resolve(value)][1]
-    - \[err, resolvedValue]
+    - \[error, value]
 
 
 - **catchify.resolve(value)**
 
     - Equivalent to [Promise.resolve(value)][1]
-    - \[err, resolvedValue]
+    - \[error, value]
 
 
 - **catchify.race(iterable)**
 
     - Equivalent to [Promise.race(iterable)][2]
-    - \[err, resolvedValue]
+    - \[error, value]
 
 
 - **catchify.all(iterable)**
 
     - Equivalent to [Promise.all(iterable)][3]
-    - The resolved values are spread after error value
-    - \[err, ...resolvedValues]
+    - \[error, values]
 
 
 - **catchify.reject(reason)**
 
     - Equivalent to [Promise.reject(reason)][4]
-    - \[err]
+    - \[error]
   
 [0]: http://blog.grossman.io/how-to-write-async-await-without-try-catch-blocks-in-javascript/
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
