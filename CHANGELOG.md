@@ -9,6 +9,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 
 ### Minor
+- Add `catchify.some(iterable)` which is like `catchify.all(iterable)` but 
+an error does not prevent all errors and values from being returned
 
 ### Patch
 
