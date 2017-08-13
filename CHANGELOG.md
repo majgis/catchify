@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+- Fix issue with `catchify.some(iterable)` so that it works with iterable types other than array
 
 ## [v2.2.0] - 2017-08-13
 

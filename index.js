@@ -49,13 +49,6 @@ function onError(error) {
   };
 }
 
-function onValueOrError(value) {
-  return Promise
-    .resolve(value)
-    .then(onValue)
-    .catch(onError);
-}
-
 function extractValue(result) {
   return result.value || null;
 }
@@ -72,8 +65,15 @@ function onThenWithErrors(results) {
 }
 
 catchify.some = function catchifySome(iterable) {
+  const items = [];
+  for (let value of iterable) {
+    items.push(Promise
+      .resolve(value)
+      .then(onValue, onError)
+    );
+  }
   return Promise
-    .all(iterable.map(onValueOrError))
+    .all(items)
     .then(onThenWithErrors);
 };
 
