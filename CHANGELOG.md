@@ -11,6 +11,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+
+## [v2.1.1] - 2017-08-13
+
+### Patch
 - Fix `catchify.some(iterable)` to work with any value type, not just promises.
 
 ## [v2.1.0] - 2017-08-13
@@ -75,7 +79,8 @@ an error does not prevent all errors and values from being returned
 ### Major
 - Initial release
 
-[Unreleased]: https://github.com/majgis/catchify/compare/v2.1.0...master
+[Unreleased]: https://github.com/majgis/catchify/compare/v2.1.1...master
+[v2.1.1]: https://github.com/majgis/catchify/compare/v2.1.0...v2.1.1
 [v2.1.0]: https://github.com/majgis/catchify/compare/v2.0.0...v2.1.0
 [v2.0.0]: https://github.com/majgis/catchify/compare/v1.1.4...v2.0.0
 [v1.1.4]: https://github.com/majgis/catchify/compare/v1.1.3...v1.1.4
