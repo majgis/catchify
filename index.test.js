@@ -43,7 +43,7 @@ async function testReject(reason) {
 
 testReject('test');
 
-async function testSome (iterable){
+async function testSome(iterable) {
   const [errors, values] = await catchify.some(iterable);
   console.log(`some - err: ${JSON.stringify(errors)}, values: ${JSON.stringify(values)}`)
 }
@@ -54,5 +54,72 @@ testSome([
   Promise.reject(true)
 ]);
 
+async function testLimit(iterable) {
+  const [errors, values] = await catchify.limit(iterable, 2);
+  console.log(`limit - err: ${JSON.stringify(errors)}, values: ${JSON.stringify(values)}`)
+}
+
+testLimit([
+  1,
+  Promise.resolve(2),
+  Promise.reject(3),
+  new Promise((resolve) => {
+    setTimeout(resolve.bind(null, 4), 500)
+  }),
+  ()=>{
+    return new Promise((resolve) => {
+      setTimeout(resolve.bind(null, 5), 500)
+    })
+  }
+]);
+
+testLimit([
+  ()=>{
+    return new Promise((resolve) => {
+      setTimeout(()=>{
+        const result = 1;
+        console.log(result);
+        resolve(result);
+      }, 2000);
+    });
+  },
+  ()=>{
+    return new Promise((resolve) => {
+      setTimeout(()=>{
+        const result = 2;
+        console.log(result);
+        resolve(result);
+      }, 2000);
+    });
+  },
+  ()=>{
+    return new Promise((resolve) => {
+      setTimeout(()=>{
+        const result = 3;
+        console.log(result);
+        resolve(result);
+      }, 2000);
+    });
+  },
+  ()=>{
+    return new Promise((resolve) => {
+      setTimeout(()=>{
+        const result = 4;
+        console.log(result);
+        resolve(result);
+      }, 2000);
+    });
+  },
+  ()=>{
+    return new Promise((resolve) => {
+      setTimeout(()=>{
+        const result = 5;
+        console.log(result);
+        resolve(result);
+      }, 2000);
+    });
+  }
+]);
+
 setTimeout(() => {
-}, 500);
+}, 1000);

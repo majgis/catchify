@@ -35,14 +35,14 @@ catchify.reject = function catchifyReject(reason) {
     .catch(onCatch)
 };
 
-function onValue (value) {
+function onValue(value) {
   return {
     error: null,
     value: value
   };
 }
 
-function onError (error) {
+function onError(error) {
   return {
     error: error,
     value: null
@@ -56,15 +56,15 @@ function onValueOrError(value) {
     .catch(onError);
 }
 
-function extractValue (result) {
+function extractValue(result) {
   return result.value || null;
 }
 
-function extractError (result) {
+function extractError(result) {
   return result.error || null;
 }
 
-function onThenWithErrors (results) {
+function onThenWithErrors(results) {
   return [
     results.map(extractError),
     results.map(extractValue)
@@ -75,6 +75,27 @@ catchify.some = function catchifySome(iterable) {
   return Promise
     .all(iterable.map(onValueOrError))
     .then(onThenWithErrors);
+};
+
+catchify.limit = async function catchifyLimit(iterable, limit = 2) {
+  const allErrors = [];
+  const allValues = [];
+  const queue = [];
+  for (let value of iterable) {
+    queue.push(typeof value === 'function' ? value() : value);
+    if (queue.length === limit) {
+      const [errors, values] = await catchify.some(queue);
+      allErrors.push(...errors);
+      allValues.push(...values);
+      queue.length = 0;
+    }
+  }
+  if (queue.length > 0) {
+    const [errors, values] = await catchify.some(queue);
+    allErrors.push(...errors);
+    allValues.push(...values);
+  }
+  return [allErrors, allValues];
 };
 
 module.exports = catchify;

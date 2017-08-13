@@ -9,6 +9,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 
 ### Minor
+- Add `catchify.limit(iterable, limit)` which is like `catchify.some(iterable)` but allows 
+the limiting of how many asynchronous tasks run concurrently
 
 ### Patch
 
