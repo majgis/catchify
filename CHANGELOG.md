@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+- Move change-log from dependency to devDependency
 
 ## [v1.1.4] - 2017-08-09
 
