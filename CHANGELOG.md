@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+- Exclude files from package by updating .npmignore
 
 ## [v2.4.0] - 2017-08-16
 
