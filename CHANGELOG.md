@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Patch
 - Update the readme
+- Replace adhoc tests with more thorough tests using ava
 
 ## [v2.3.3] - 2017-08-13
 
