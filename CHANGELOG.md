@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 
 ### Minor
+- Make `catchify.limit(iterable, limit, exitOnError)` support objects
 - Make `catchify.some(iterable)` support objects
 - Make `catchify.all(iterable)` support objects
 

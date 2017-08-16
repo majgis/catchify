@@ -82,9 +82,9 @@ async function example(promise){
     = catchify.some([promise1, promise2])
   ```
   
-* **catchify.limit(iterable, limit=2, exitOnError=false)**
+* **catchify.limit(iterable||object, limit=2, exitOnError=false)**
   * Like `catchify.some(iterable)` but it allows limiting concurrent asynchronous tasks
-  * Promises have no way to delay start, so any function in iterable will be called on its turn
+  * Promises have no way to delay start, so any function in iterable||object will be called on its turn
   * Values returned from called functions can be a Promise, which would provide the actual limiting 
     functionality, or any other value for convenience, as it will be passed to `Promise.resolve()`
     before proceeding

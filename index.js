@@ -96,10 +96,11 @@ catchify.some = function catchifySome(iterable) {
 };
 
 catchify.limit = async function catchifyLimit(iterable, limit = 2, exitOnError = false) {
+  const [keys, items] = objToArray(iterable);
   const allErrors = [];
   const allValues = [];
   const queue = [];
-  for (let value of iterable) {
+  for (let value of items) {
     queue.push(typeof value === 'function' ? value() : value);
     if (queue.length === limit) {
       const [errors, values] = await catchify.some(queue);
@@ -116,7 +117,10 @@ catchify.limit = async function catchifyLimit(iterable, limit = 2, exitOnError =
     allErrors.push(...errors);
     allValues.push(...values);
   }
-  return [allErrors, allValues];
+  return [
+    arrayToObj(keys, allErrors),
+    arrayToObj(keys, allValues)
+  ];
 };
 
 module.exports = catchify;
