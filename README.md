@@ -50,7 +50,8 @@ async function example(promise){
   ```
   
 * **catchify.all(iterable)**
-  * Equivalent to [Promise.all(iterable)][3]
+  * Similar to [Promise.all(iterable)][3] with the following difference:
+    * If there is an error, values will be an empty array so it is safe to use array destructuring
   * Returns: \[error, values]
   
   ```

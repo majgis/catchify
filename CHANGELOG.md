@@ -11,8 +11,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
-- Update the readme
+- Fix `catchify.all(iterable)` so that values is an array on error, 
+  making it safe for array destructuring
 - Replace adhoc tests with more thorough tests using ava
+- Update the readme
 
 ## [v2.3.3] - 2017-08-13
 

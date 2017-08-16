@@ -8,6 +8,10 @@ function onCatch(error) {
   return [error, null];
 }
 
+function onCatchAll(error) {
+  return [error, []];
+}
+
 function catchify(p) {
   return Promise
     .resolve(p)
@@ -26,7 +30,7 @@ catchify.all = function catchifyAll(iterable) {
 
   return Promise
     .all(iterable)
-    .then(onThen, onCatch);
+    .then(onThen, onCatchAll);
 };
 
 catchify.reject = function catchifyReject(reason) {

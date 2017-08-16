@@ -98,13 +98,15 @@ test('catchify.all - two values resolved', async t => {
 });
 
 test('catchify.all - one of three promises rejected', async t => {
-  const [err, value] = await catchify.all([
+  const [error, [value1, value2, value3]] = await catchify.all([
     Promise.resolve(1),
     Promise.resolve(2),
     Promise.reject(3),
   ]);
-  t.is(err, 3);
-  t.is(value, null);
+  t.is(error, 3);
+  t.is(value1, undefined);
+  t.is(value2, undefined);
+  t.is(value3, undefined);
 });
 
 /////////////////
