@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Patch
 - Add semistandard and fix reported issues
+- Update the readme
 
 ## [v2.4.1] - 2017-08-16
 

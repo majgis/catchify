@@ -9,6 +9,8 @@ Also see [default values for array destructuring][5].
 
 ## Example
 
+### 
+
 ```
 const catchify = require('catchify');
 
@@ -62,6 +64,7 @@ async function example(promise){
 
 * **catchify.all(iterable||object)**
   * Similar to [Promise.all(iterable)][3] with the following differences:
+    * Accepts either an object or an iterable
     * If there is an error, values will be an empty array||object so it is safe to use array||object destructuring
   * Returns: \[error, values]
   
@@ -74,7 +77,7 @@ async function example(promise){
   ```
 
 * **catchify.some(iterable||object)**
-  * Like `catchify.all(iterable)` but an error does not prevent resolution of the rest
+  * Like `catchify.all(iterable||object)` but an error does not prevent resolution of the rest
   * Within errors, an error will be null if there was no error
   * Within values, the value will be null if there was an error
   * Returns: \[errors, values]
@@ -88,7 +91,7 @@ async function example(promise){
   ```
   
 * **catchify.limit(iterable||object, limit=2, exitOnError=false)**
-  * Like `catchify.some(iterable)` but it allows limiting concurrent asynchronous tasks
+  * Like `catchify.some(iterable||object)` but it allows limiting concurrent asynchronous tasks
   * Promises have no way to delay start, so any function in iterable||object will be called on its turn
   * Values returned from called functions can be a Promise, which would provide the actual limiting 
     functionality, or any other value for convenience, as it will be passed to `Promise.resolve()`
