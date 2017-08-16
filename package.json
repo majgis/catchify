@@ -6,13 +6,15 @@
   "author": "Michael Jackson <majgis@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "node index.test.js"
+    "test": "ava",
+    "test-watch":"ava --watch"
   },
   "engines": {
     "node": ">=8"
   },
   "dependencies": {},
   "devDependencies": {
+    "ava": "^0.22.0",
     "change-log": "^1.6.1"
   },
   "repository": {
