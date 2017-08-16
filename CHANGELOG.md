@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 
 ### Minor
+- Make `catchify.all(iterable)` support objects
 
 ### Patch
 - Add a link to this change log in the readme

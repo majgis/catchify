@@ -1,5 +1,14 @@
 'use strict';
 
+const arrayToObj = require('./lib/arrayToObj');
+const objToArray = require('./lib/objToArray');
+
+function onThenAllFactory(keys){
+  return function onThenAll(value){
+    return [null, arrayToObj(keys,value)]
+  }
+}
+
 function onThen(value) {
   return [null, value];
 }
@@ -8,8 +17,10 @@ function onCatch(error) {
   return [error, null];
 }
 
-function onCatchAll(error) {
-  return [error, []];
+function onCatchAllFactory(keys) {
+  return function onCatchAll(error) {
+    return [error, keys ? {} : []];
+  }
 }
 
 function catchify(p) {
@@ -27,10 +38,10 @@ catchify.race = function catchifyRace(iterable) {
 };
 
 catchify.all = function catchifyAll(iterable) {
-
+  const [keys, values] = objToArray(iterable);
   return Promise
-    .all(iterable)
-    .then(onThen, onCatchAll);
+    .all(values)
+    .then(onThenAllFactory(keys), onCatchAllFactory(keys));
 };
 
 catchify.reject = function catchifyReject(reason) {

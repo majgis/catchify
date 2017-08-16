@@ -51,9 +51,10 @@ async function example(promise){
     = await catchify.race([promise1, promise2])
   ```
   
-* **catchify.all(iterable)**
+* **catchify.all(iterable||object)**
   * Similar to [Promise.all(iterable)][3] with the following difference:
     * If there is an error, values will be an empty array so it is safe to use array destructuring
+    * The input parameter may also be an object, in which case values will also be an object
   * Returns: \[error, values]
   
   ```

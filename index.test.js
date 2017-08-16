@@ -109,6 +109,32 @@ test('catchify.all - one of three promises rejected', async t => {
   t.is(value3, undefined);
 });
 
+test('catchify.all - object with values', async t => {
+  const [error, {a, b}] = await catchify.all({a:1, b:2});
+  t.is(error, null);
+  t.is(a, 1);
+  t.is(b, 2);
+});
+
+test('catchify.all - object with promises that both resolve', async t => {
+  const [error, {a, b}] = await catchify.all({
+    a:Promise.resolve(1),
+    b:Promise.resolve(2)
+  });
+  t.is(error, null);
+  t.is(a, 1);
+  t.is(b, 2);
+});
+
+test('catchify.all - object with promises and one rejects', async t => {
+  const [error, values] = await catchify.all({
+    a:Promise.resolve(1),
+    b:Promise.reject(2)
+  });
+  t.is(error, 2);
+  t.deepEqual(values, {});
+});
+
 /////////////////
 //catchify.reject
 test('catchify.reject - value', async t => {
