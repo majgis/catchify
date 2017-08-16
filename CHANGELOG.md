@@ -11,6 +11,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+
+## [v2.3.4] - 2017-08-16
+
+### Patch
 - Fix `catchify.all(iterable)` so that values is an array on error, 
   making it safe for array destructuring
 - Replace adhoc tests with more thorough tests using ava
@@ -119,7 +123,8 @@ an error does not prevent all errors and values from being returned
 ### Major
 - Initial release
 
-[Unreleased]: https://github.com/majgis/catchify/compare/v2.3.3...master
+[Unreleased]: https://github.com/majgis/catchify/compare/v2.3.4...master
+[v2.3.4]: https://github.com/majgis/catchify/compare/v2.3.3...v2.3.4
 [v2.3.3]: https://github.com/majgis/catchify/compare/v2.3.2...v2.3.3
 [v2.3.2]: https://github.com/majgis/catchify/compare/v2.3.1...v2.3.2
 [v2.3.1]: https://github.com/majgis/catchify/compare/v2.3.0...v2.3.1
