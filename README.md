@@ -41,7 +41,16 @@ async function example(promise){
   const [error, value] 
     = await catchify.resolve('Quickly test the success path')
   ```
+
+* **catchify.reject(reason)**
+  * Equivalent to [Promise.reject(reason)][4]
+  * Returns: \[error]
   
+  ```
+  const [error, value] 
+    = await catchify.reject('Quickly test the error path')
+  ```
+
 * **catchify.race(iterable)**
   * Equivalent to [Promise.race(iterable)][2]
   * Returns: \[error, value]
@@ -50,7 +59,7 @@ async function example(promise){
   const [error, value] 
     = await catchify.race([promise1, promise2])
   ```
-  
+
 * **catchify.all(iterable||object)**
   * Similar to [Promise.all(iterable)][3] with the following differences:
     * If there is an error, values will be an empty array||object so it is safe to use array||object destructuring
@@ -63,16 +72,7 @@ async function example(promise){
   const [error, {a: value1, b: value2}]
     = await catchify.all({a: promise1, b: promise2})
   ```
-  
-* **catchify.reject(reason)**
-  * Equivalent to [Promise.reject(reason)][4]
-  * Returns: \[error]
-  
-  ```
-  const [error, value] 
-    = await catchify.reject('Quickly test the error path')
-  ```
-  
+
 * **catchify.some(iterable||object)**
   * Like `catchify.all(iterable)` but an error does not prevent resolution of the rest
   * Within errors, an error will be null if there was no error
