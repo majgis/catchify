@@ -52,14 +52,16 @@ async function example(promise){
   ```
   
 * **catchify.all(iterable||object)**
-  * Similar to [Promise.all(iterable)][3] with the following difference:
-    * If there is an error, values will be an empty array so it is safe to use array destructuring
-    * The input parameter may also be an object, in which case values will also be an object
+  * Similar to [Promise.all(iterable)][3] with the following differences:
+    * If there is an error, values will be an empty array||object so it is safe to use array||object destructuring
   * Returns: \[error, values]
   
   ```
   const [error, [value1, value2]] 
     = await catchify.all([promise1, promise2])
+
+  const [error, {a: value1, b: value2}]
+    = await catchify.all({a: promise1, b: promise2})
   ```
   
 * **catchify.reject(reason)**
@@ -80,6 +82,9 @@ async function example(promise){
   ```
   const [[error1, error2], [value1, value2]] 
     = catchify.some([promise1, promise2])
+
+  const [{a: error1, b: error2}, {a: value1, b: value2}] 
+    = catchify.some({a: promise1, b: promise2})
   ```
   
 * **catchify.limit(iterable||object, limit=2, exitOnError=false)**
@@ -99,6 +104,11 @@ async function example(promise){
     [error1, error2, error3], 
     [value1, value2, value3]
   ] = catchify.limit([fn1, fn2, fn3])
+
+  const [
+    {a: error1, b: error2, c: error3}, 
+    {a: value1, b: value2, c: value3}
+  ] = catchify.limit({a: fn1, b: fn2, c: fn3})
   ```
 
 [0]: http://blog.grossman.io/how-to-write-async-await-without-try-catch-blocks-in-javascript/
