@@ -72,24 +72,27 @@ function extractError(result) {
   return result.error || null;
 }
 
-function onThenWithErrors(results) {
-  return [
-    results.map(extractError),
-    results.map(extractValue)
-  ];
+function onThenWithErrorsFactory(keys) {
+  return function onThenWithErrors(results) {
+    return [
+      arrayToObj(keys, results.map(extractError)),
+      arrayToObj(keys, results.map(extractValue))
+    ];
+  }
 }
 
 catchify.some = function catchifySome(iterable) {
-  const items = [];
-  for (let value of iterable) {
-    items.push(Promise
+  const [keys, items] = objToArray(iterable);
+  const promises = [];
+  for (let value of items) {
+    promises.push(Promise
       .resolve(value)
       .then(onValue, onError)
     );
   }
   return Promise
-    .all(items)
-    .then(onThenWithErrors);
+    .all(promises)
+    .then(onThenWithErrorsFactory(keys));
 };
 
 catchify.limit = async function catchifyLimit(iterable, limit = 2, exitOnError = false) {

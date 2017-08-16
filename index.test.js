@@ -176,6 +176,28 @@ test('catchify.some - three promises one rejects', async t => {
   t.deepEqual(values, [1, 2, null]);
 });
 
+test('catchify.some - object with three resolved values', async t => {
+  const [errors, values] = await catchify.some({
+    a:Promise.resolve(1),
+    b:Promise.resolve(2),
+    c:Promise.resolve(3)
+  });
+
+  t.deepEqual(errors, {a:null, b:null, c:null});
+  t.deepEqual(values, {a:1, b:2, c:3});
+});
+
+test('catchify.some - object with two resolved and one rejected', async t => {
+  const [errors, values] = await catchify.some({
+    a:Promise.resolve(1),
+    b:Promise.reject(2),
+    c:Promise.resolve(3)
+  });
+
+  t.deepEqual(errors, {a:null, b:2, c:null});
+  t.deepEqual(values, {a:1, b:null, c:3});
+});
+
 
 ////////////////
 //catchify.limit

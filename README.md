@@ -71,10 +71,10 @@ async function example(promise){
     = await catchify.reject('Quickly test the error path')
   ```
   
-* **catchify.some(iterable)**
+* **catchify.some(iterable||object)**
   * Like `catchify.all(iterable)` but an error does not prevent resolution of the rest
-  * Within the errors array, an error will be null if there was no error
-  * Within the values array, the value will be null if there was an error
+  * Within errors, an error will be null if there was no error
+  * Within values, the value will be null if there was an error
   * Returns: \[errors, values]
   
   ```
