@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+- Add semistandard and fix reported issues
 
 ## [v2.4.1] - 2017-08-16
 

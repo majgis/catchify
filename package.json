@@ -7,7 +7,10 @@
   "license": "MIT",
   "scripts": {
     "test": "ava",
-    "test-watch":"ava --watch"
+    "test-watch": "ava --watch",
+    "prepublishbuild": "npm run lint && npm test",
+    "lint": "semistandard",
+    "lint-fix": "semistandard --fix"
   },
   "engines": {
     "node": ">=8"
@@ -15,7 +18,8 @@
   "dependencies": {},
   "devDependencies": {
     "ava": "^0.22.0",
-    "change-log": "^1.6.1"
+    "change-log": "^1.6.1",
+    "semistandard": "^11.0.0"
   },
   "repository": {
     "type": "git",
