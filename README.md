@@ -5,6 +5,8 @@ Inspired by this [article][0].
 
 Also see [default values for array destructuring][5].
 
+[Change Log][6]
+
 ## Example
 
 ```
@@ -104,3 +106,4 @@ async function example(promise){
 [3]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
 [4]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject
 [5]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Default_values
+[6]: https://github.com/majgis/catchify/blob/master/CHANGELOG.md
