@@ -151,5 +151,62 @@ test('catchify.some - three promises one rejects', async t => {
 
 ////////////////
 //catchify.limit
+test('catchify.limit - three promises, last one rejects', async t => {
+  const [errors, values] = await catchify.limit([
+    new Promise((resolve, reject) => setTimeout(()=>resolve(1), 5)),
+    new Promise((resolve, reject) => setTimeout(()=>resolve(2), 5)),
+    new Promise((resolve, reject) => setTimeout(()=>reject(3), 5))
+  ]);
+  t.deepEqual(errors, [null, null, 3]);
+  t.deepEqual(values, [1,2, null]);
+});
 
+test('catchify.limit - three promises, second one rejects', async t => {
+  const [errors, values] = await catchify.limit([
+    new Promise((resolve, reject) => setTimeout(()=>resolve(1), 5)),
+    new Promise((resolve, reject) => setTimeout(()=>reject(2), 5)),
+    new Promise((resolve, reject) => setTimeout(()=>resolve(3), 5))
+  ]);
+  t.deepEqual(errors, [null, 2, null]);
+  t.deepEqual(values, [1,null, 3]);
+});
 
+test('catchify.limit - three promises, first one rejects', async t => {
+  const [errors, values] = await catchify.limit([
+    new Promise((resolve, reject) => setTimeout(()=>resolve(1), 5)),
+    new Promise((resolve, reject) => setTimeout(()=>reject(2), 5)),
+    new Promise((resolve, reject) => setTimeout(()=>resolve(3), 5))
+  ]);
+  t.deepEqual(errors, [null, 2, null]);
+  t.deepEqual(values, [1,null, 3]);
+});
+
+test('catchify.limit - three promises, first one rejects', async t => {
+  const [errors, values] = await catchify.limit([
+    new Promise((resolve, reject) => setTimeout(()=>reject(1), 5)),
+    new Promise((resolve, reject) => setTimeout(()=>resolve(2), 5)),
+    new Promise((resolve, reject) => setTimeout(()=>resolve(3), 5))
+  ]);
+  t.deepEqual(errors, [1, null, null]);
+  t.deepEqual(values, [null, 2, 3]);
+});
+
+test('catchify.limit - three promises, first one rejects, limit=1, exitOnError=true', async t => {
+  const [errors, values] = await catchify.limit([
+    new Promise((resolve, reject) => setTimeout(()=>reject(1), 5)),
+    new Promise((resolve, reject) => setTimeout(()=>resolve(2), 5)),
+    new Promise((resolve, reject) => setTimeout(()=>resolve(3), 5))
+  ], 1, true);
+  t.deepEqual(errors, [1]);
+  t.deepEqual(values, [null]);
+});
+
+test('catchify.limit - three promises, second one rejects, limit=1, exitOnError=true', async t => {
+  const [errors, values] = await catchify.limit([
+    new Promise((resolve, reject) => setTimeout(()=>resolve(1), 5)),
+    new Promise((resolve, reject) => setTimeout(()=>reject(2), 5)),
+    new Promise((resolve, reject) => setTimeout(()=>resolve(3), 5))
+  ], 1, true);
+  t.deepEqual(errors, [null, 2]);
+  t.deepEqual(values, [1, null]);
+});
