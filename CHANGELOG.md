@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+- Add an additional example to the readme
 - Extract tests into separate files
 - Upgrade change-log to v1.7.1
 

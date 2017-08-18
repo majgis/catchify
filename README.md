@@ -38,6 +38,20 @@ Also see [array destructuring with default values][5].
       return value;
     }
 
+### Array Destructuring Ad Nauseam
+
+    const some = require('catchify/some');
+    
+    async function example() {
+      const [ [error1, error2], [value1, value2] ] = await some([
+        Promise.resolve(1),
+        Promise.reject(2)
+      ])
+      if (error1 || error2) console.log('no bueno');
+      if (value1 || value2) console.log('muy bueno');
+    }
+
+
 ## API
 
 * **catchify(value)**
