@@ -9,10 +9,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 
 ### Minor
-- Update the readme with an additional example
-- Extract API functions into separate files that can be required independently
 
 ### Patch
+
+## [v2.5.0] - 2017-08-18
+
+### Minor
+- Update the readme with an additional example
+- Extract API functions into separate files that can be required independently
 
 ## [v2.4.2] - 2017-08-16
 
@@ -146,7 +150,8 @@ an error does not prevent all errors and values from being returned
 ### Major
 - Initial release
 
-[Unreleased]: https://github.com/majgis/catchify/compare/v2.4.2...master
+[Unreleased]: https://github.com/majgis/catchify/compare/v2.5.0...master
+[v2.5.0]: https://github.com/majgis/catchify/compare/v2.4.2...v2.5.0
 [v2.4.2]: https://github.com/majgis/catchify/compare/v2.4.1...v2.4.2
 [v2.4.1]: https://github.com/majgis/catchify/compare/v2.4.0...v2.4.1
 [v2.4.0]: https://github.com/majgis/catchify/compare/v2.3.4...v2.4.0
