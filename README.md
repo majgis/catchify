@@ -7,9 +7,17 @@ Also see [default values for array destructuring][5].
 
 [Change Log][6]
 
-## Example
+## Require
 
-### 
+### Require an Object With All Functions
+
+    const catchify = require('catchify');
+
+### Require Functions Individually
+
+    const all = require('catchify/all');
+
+## Example
 
 ```
 const catchify = require('catchify');
@@ -21,6 +29,8 @@ async function example(promise){
 }
 
 ```
+
+
 
 ## API
 
