@@ -3,7 +3,7 @@ An async/await utility to eliminate try/catch in favor of error values.
 
 Inspired by this [article][0].
 
-Also see [default values for array destructuring][5].
+Also see [array destructuring with default values][5].
 
 [Change Log][6]
 
@@ -17,20 +17,26 @@ Also see [default values for array destructuring][5].
 
     const all = require('catchify/all');
 
-## Example
+## Examples
 
-```
-const catchify = require('catchify');
+### Resolve Promise to \[error, value]
 
-async function example(promise){
-  const [error, value={message:'Hello'}] = await catchify(promise);
-  if (error) console.log(error);
-  return value;
-}
+    const catchify = require('catchify');
+    
+    async function example(promise) {
+      const [error, value] = await catchify(promise);
+      if (error) console.log(error);
+    }
 
-```
+### Array Destructuring with a Default Value
 
-
+    const catchify = require('catchify');
+    
+    async function example(promise) {
+      const [error, value={message:'Hello'}] = await catchify(promise);
+      if (error) console.log(error);
+      return value;
+    }
 
 ## API
 

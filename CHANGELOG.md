@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 
 ### Minor
+- Update the readme with an additional example
 - Extract API functions into separate files that can be required independently
 
 ### Patch
