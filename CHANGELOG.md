@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Minor
 
 ### Patch
+- Upgrade change-log to v1.7.1
 
 ## [v2.5.0] - 2017-08-18
 
@@ -150,7 +151,8 @@ an error does not prevent all errors and values from being returned
 ### Major
 - Initial release
 
-[Unreleased]: https://github.com/majgis/catchify/compare/v2.5.0...master
+[Unreleased]: https://github.com/majgis/catchify/compare/v2.5.1...master
+[v2.5.1]: https://github.com/majgis/catchify/compare/v2.5.0...v2.5.1
 [v2.5.0]: https://github.com/majgis/catchify/compare/v2.4.2...v2.5.0
 [v2.4.2]: https://github.com/majgis/catchify/compare/v2.4.1...v2.4.2
 [v2.4.1]: https://github.com/majgis/catchify/compare/v2.4.0...v2.4.1
