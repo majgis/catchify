@@ -9,6 +9,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 
 ### Minor
+
+### Patch
+
+## [v2.6.0] - 2017-09-07
+
+### Minor
 - Add newPromiseHandle() method.
 
 ### Patch
@@ -160,7 +166,8 @@ an error does not prevent all errors and values from being returned
 ### Major
 - Initial release
 
-[Unreleased]: https://github.com/majgis/catchify/compare/v2.5.1...master
+[Unreleased]: https://github.com/majgis/catchify/compare/v2.6.0...master
+[v2.6.0]: https://github.com/majgis/catchify/compare/v2.5.1...v2.6.0
 [v2.5.1]: https://github.com/majgis/catchify/compare/v2.5.0...v2.5.1
 [v2.5.1]: https://github.com/majgis/catchify/compare/v2.5.0...v2.5.1
 [v2.5.0]: https://github.com/majgis/catchify/compare/v2.4.2...v2.5.0
