@@ -38,7 +38,7 @@ Also see [array destructuring with default values][5].
       return value;
     }
 
-### Array Destructuring Ad Nauseam
+### Wait for all promises to resolve, regardless of error
 
     const some = require('catchify/some');
     
@@ -47,8 +47,8 @@ Also see [array destructuring with default values][5].
         Promise.resolve(1),
         Promise.reject(2)
       ]);
-      if (error1 || error2) console.log('no bueno');
-      if (value1 || value2) console.log('muy bueno');
+      if (error2) console.log('This error is not critical, we can proceed');
+      if (value1) console.log('We need this value to proceed, but the other is optional');
     }
 
 
