@@ -53,3 +53,10 @@ test('catchify.limit - three promises, last one rejects', async t => {
   t.deepEqual(errors, [null, null, new Error('3')]);
   t.deepEqual(values, [1, 2, null]);
 });
+
+test('catchify.newPromiseHandle returns a promise handle object', t => {
+  const handle = catchify.newPromiseHandle();
+  t.truthy(handle.promise);
+  t.truthy(handle.resolve);
+  t.truthy(handle.reject);
+});

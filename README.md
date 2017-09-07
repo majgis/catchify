@@ -51,6 +51,24 @@ Also see [array destructuring with default values][5].
       if (value1) console.log('We need this value to proceed, but the other is optional');
     }
 
+### Use a promise handle to return a single promise instance
+
+    let pending = null;
+    
+    async function example() {
+      if (pending) return pending;
+      
+      const handle = catchify.newPromiseHandle();
+      pending = handle.promise;
+      
+      const [error, value] = await catchify.resolve('example');
+      pending = null;
+      
+      if (error) return handle.reject('rejected');
+      return handle.resolve('resolved');
+    }
+
+
 
 ## API
 
@@ -142,6 +160,30 @@ Also see [array destructuring with default values][5].
     {a: error1, b: error2, c: error3}, 
     {a: value1, b: value2, c: value3}
   ] = await catchify.limit({a: fn1, b: fn2, c: fn3})
+  ```
+  
+    
+* **catchify.newPromiseHandle()**
+  * Like new Promise((resolve, reject)=>{}) except you have a handle to call 
+    resolve and reject outside the function
+  * The resolve and reject methods will return instances of the promise
+  * The promise has NOT been wrapped with a call to catchify.resolve()
+  * Returns {promise, resolve, reject}
+
+  ```
+  // Access the promise
+  let pending;
+  const handle = catchify.newPromiseHandle();
+  pending = handle.promise;
+  
+  // Reject the promise
+  const handle = catchify.newPromiseHandle();
+  handle.reject('rejected');
+  
+  // Resolve the promise
+  const handle = catchify.newPromiseHandle();
+  handle.resolve('resolved');
+
   ```
 
 [0]: http://blog.grossman.io/how-to-write-async-await-without-try-catch-blocks-in-javascript/

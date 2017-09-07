@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Major
 
 ### Minor
+- Add newPromiseHandle() method.
 
 ### Patch
 - Fix errors in readme examples where await is missing
