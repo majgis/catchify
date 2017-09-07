@@ -1,9 +1,12 @@
 # catchify
-An async/await utility to eliminate try/catch in favor of error values.
+An set of async/await utilities:
 
-Inspired by this [article][0].
+- Eliminate try/catch in favor of error values
+    - Inspired by this [article][0]
+- Create a promise handle to imperatively resolve and reject a promise
+    - Useful for returning a single instance of a promise
 
-Also see [array destructuring with default values][5].
+Also see [array destructuring with default values][5] for handling returned arrays.
 
 [Change Log][6]
 
@@ -33,7 +36,8 @@ Also see [array destructuring with default values][5].
     const catchify = require('catchify');
     
     async function example(promise) {
-      const [error, value={message:'Hello'}] = await catchify(promise);
+      const [error, value={message:'Hello'}] 
+        = await catchify(promise);
       if (error) console.log(error);
       return value;
     }
@@ -47,12 +51,14 @@ Also see [array destructuring with default values][5].
         Promise.resolve(1),
         Promise.reject(2)
       ]);
-      if (error2) console.log('This error is not critical, we can proceed');
-      if (value1) console.log('We need this value to proceed, but the other is optional');
+      if (error2) console.error('error2');
+      if (value1) console.log('value1');
     }
 
 ### Use a promise handle to return a single promise instance
 
+    const catchify = require('catchify');
+    
     let pending = null;
     
     async function example() {
@@ -69,10 +75,9 @@ Also see [array destructuring with default values][5].
     }
 
 
-
 ## API
 
-* **catchify(value)**
+### catchify(value)
   * Equivalent to [Promise.resolve(value)][1]
   * `catchify(value)` is an alias for `catchify.resolve(value)`
   * Returns: \[error, value]
@@ -82,7 +87,7 @@ Also see [array destructuring with default values][5].
     = await catchify(promise)
   ```
   
-* **catchify.resolve(value)**
+### catchify.resolve(value)
   * Equivalent to [Promise.resolve(value)][1]
   * `catchify.resolve(value)` is an alias for `catchify(value)`
   * Returns: \[error, value]
@@ -92,7 +97,7 @@ Also see [array destructuring with default values][5].
     = await catchify.resolve('Quickly test the success path')
   ```
 
-* **catchify.reject(reason)**
+### catchify.reject(reason)
   * Equivalent to [Promise.reject(reason)][4]
   * Returns: \[error]
   
@@ -101,7 +106,7 @@ Also see [array destructuring with default values][5].
     = await catchify.reject('Quickly test the error path')
   ```
 
-* **catchify.race(iterable)**
+### catchify.race(iterable)
   * Equivalent to [Promise.race(iterable)][2]
   * Returns: \[error, value]
   
@@ -110,7 +115,7 @@ Also see [array destructuring with default values][5].
     = await catchify.race([promise1, promise2])
   ```
 
-* **catchify.all(iterable||object)**
+### catchify.all(iterable||object)
   * Similar to [Promise.all(iterable)][3] with the following differences:
     * Accepts either an object or an iterable
     * If there is an error, values will be an empty array||object so it is safe to use array||object destructuring
@@ -124,7 +129,7 @@ Also see [array destructuring with default values][5].
     = await catchify.all({a: promise1, b: promise2})
   ```
 
-* **catchify.some(iterable||object)**
+### catchify.some(iterable||object)
   * Like `catchify.all(iterable||object)` but an error does not prevent resolution of the rest
   * Within errors, an error will be null if there was no error
   * Within values, the value will be null if there was an error
@@ -138,7 +143,7 @@ Also see [array destructuring with default values][5].
     = await catchify.some({a: promise1, b: promise2})
   ```
   
-* **catchify.limit(iterable||object, limit=2, exitOnError=false)**
+### catchify.limit(iterable||object, limit=2, exitOnError=false)
   * Like `catchify.some(iterable||object)` but it allows limiting concurrent asynchronous tasks
   * Promises have no way to delay start, so any function in iterable||object will be called on its turn
   * Values returned from called functions can be a Promise, which would provide the actual limiting 
@@ -163,7 +168,7 @@ Also see [array destructuring with default values][5].
   ```
   
     
-* **catchify.newPromiseHandle()**
+### catchify.newPromiseHandle()
   * Like new Promise((resolve, reject)=>{}) except you have a handle to call 
     resolve and reject outside the function
   * The resolve and reject methods will return instances of the promise
